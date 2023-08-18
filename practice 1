@@ -1,0 +1,188 @@
+  1 #!/usr/bin/env python3
+    2     #pass
+    3 
+    4 
+    5 def q1(floatstr):
+    6     '''
+    7     TLO: 112-SCRPY002, LSA 3,4
+    8     Given the floatstr, which is a comma separated string of
+    9     floats, return a list with each of the floats in the 
+   10     argument as elements in the list.
+   11     '''
+   12     res = list(map(float, floatstr.split(',')))
+   13 
+   14 #*******SSGT'S ANSWER*********
+   15    # newlist = []
+   16    # for y in floatstr.split(','):       splits into list off of commas
+   17    #    newlist.append(float(y))         turns each item into a float and brings it back into a list
+   18    # return newlist
+   19 
+   20 
+   21    # v 2
+   22 # return [float(x) for x in floatstr.split(',')]
+   23 
+   24 
+   25     return res
+   26 
+27 def q2(*args):
+   28     '''
+   29     TLO: 112-SCRPY006, LSA 3
+   30     TLO: 112-SCRPY007, LSA 4
+   31     Given the variable length argument list, return the average
+   32     of all the arguments as a float
+   33     '''
+   34     return float(sum(args)/len(args))
+   35 
+   36 #*******SSGT'S ANSWER*********
+   37 # s = 0
+   38 #for arg in args:
+   39 #    s += arg
+   40 #    return s/len(args
+   41 
+   42 
+   43 def q3(lst,n):
+   44     '''
+   45     TLO: 112-SCRPY004, LSA 3
+   46     Given a list (lst) and a number of items (n), return a new 
+   47     list containing the last n entries in lst.
+   48     '''
+   49     return lst[-n:] # removes n amount from the end of the list
+   50 
+ 51 def q4(strng):
+   52     '''
+   53     TLO: 112-SCRPY004, LSA 1,2
+   54     TLO: 112-SCRPY006, LSA 3
+   55     Given an input string, return a list containing the ordinal numbers of 
+   56     each character in the string in the order found in the input string.
+   57     '''
+   58     newlist = []
+   59     for i in list(strng):
+   60         newlist.append(ord(i))   #append only works on lists
+   61     return newlist
+   62 
+   63 
+   64 
+   65 
+   66 
+   67     pass
+   68 
+   69 def q5(strng):
+   70     '''
+   71     TLO: 112-SCRPY002, LSA 1,3
+   72     TLO: 112-SCRPY004, LSA 2
+   73     Given an input string, return a tuple with each element in the tuple
+   74     containing a single word from the input string in order.
+   75     '''
+   76     res = tuple(map(str, strng.split()))
+   77     return res
+   78     pass
+   79 
+ 80 def q6(catalog, order):
+   81     '''
+   82     TLO: 112-SCRPY007, LSA 2
+   83     Given a dictionary (catalog) whose keys are product names and values are product
+   84     prices per unit and a list of tuples (order) of product names and quantities,
+   85     compute and return the total value of the order.
+   86 
+   87     Example catalog:
+   88     {
+   89         'AMD Ryzen 5 5600X': 289.99,
+   90         'Intel Core i9-9900K': 363.50,
+   91         'AMD Ryzen 9 5900X': 569.99
+   92     }
+   93 
+   94     Example order:
+   95     [
+   96         ('AMD Ryzen 5 5600X', 5), 
+   97         ('Intel Core i9-9900K', 3)
+   98     ]
+   99 
+  100     Example result:
+  101     2540.45 
+  102 
+  103     How the above result was computed:
+  104     (289.99 * 5) + (363.50 * 3)
+  105     '''
+  106     total = []
+  107     for key in catalog:                                 # for the name in the catalog
+  108         for item in order:                              #if it matches with the name in the order
+  109             if item[0] == key:                          #you're buying it
+  110                 total.append(catalog[key] * item[1])    # it'll multiply the price from the dict with the amount in the order then add to the total
+  111     return sum(total)                                   #adds all of them together then returns
+  112 
+  113     ''' total = []
+  114         for product, price in catalog.items():
+  115             for orderp, quantity in order:
+  116                 if product == orderp:
+  117                     total.append(quantity * price)
+  118         return sum(total)'''
+  119 
+  120 
+  121 
+  122 def q7(filename):
+  123     '''
+  124     TLO: 112-SCRPY005, LSA 1
+  125     Given a filename, open the file and return the length of the first line 
+  126     in the file excluding the line terminator.
+  127     '''
+  128     with open(filename) as fp:
+  129         line = len(fp.readline().strip('\n'))
+  130     return line
+  131 
+  132 
+  133 
+34 def q8(filename,lst):
+  135     '''
+  136     TLO: 112-SCRPY003, LSA 1
+  137     TLO: 112-SCRPY004, LSA 1,2
+  138     TLO: 112-SCRPY005, LSA 1
+  139     Given a filename and a list, write each entry from the list to the file
+  140     on separate lines until a case-insensitive entry of "stop" is found in 
+  141     the list. If "stop" is not found in the list, write the entire list to 
+  142     the file on separate lines.
+  143     '''
+  144     with open (filename, 'w') as fp:
+  145         for i in lst:
+  146             if i.lower() == 'stop':
+  147                 break
+  148             fp.write(f'{i}\n')
+  149 
+  150 
+  151 
+  152     pass
+  153 
+154 def q9(miltime):
+  155     '''
+  156     TLO: 112-SCRPY003, LSA 1
+  157     Given the military time in the argument miltime, return a string 
+  158     containing the greeting of the day.
+  159     0300-1159 "Good Morning"
+  160     1200-1559 "Good Afternoon"
+  161     1600-2059 "Good Evening"
+  162     2100-0259 "Good Night"
+  163     '''
+  164     if 300 <= miltime <= 1159:
+  165         return 'Good Morning'
+  166     elif 1200 <= miltime <= 1559:
+  167         return 'Good Afternoon'
+  168     elif 1600 <= miltime <= 2059:
+  169         return 'Good Evening'
+  170     else:
+  171         return 'Good Night'
+  172     pass
+  173 
+  174 def q10(numlist):
+  175     '''
+  176     TLO: 112-SCRPY003, LSA 1
+  177     TLO: 112-SCRPY004, LSA 1
+  178     Given the argument numlist as a list of numbers, return True if all 
+  179     numbers in the list are NOT negative. If any numbers in the list are
+  180     negative, return False.
+  181     '''
+  182     for i in numlist:
+  183         if i > 0:
+  184             return True
+  185         else:
+  186             return False
+  187     pass
+  188 
