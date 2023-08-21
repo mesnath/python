@@ -1,0 +1,183 @@
+    1 #!/usr/bin/env python3
+    2 
+    3 def q1(sentence):
+    4     '''
+    5     Given a string of multiple words separated by single spaces,
+    6     return a new string with the sentence reversed. The words
+    7     themselves should remain as they are. For example, given
+    8     'it is accepted as a masterpiece on strategy', the returned
+    9     string should be 'strategy on masterpiece a as accepted is it'.
+   10     '''
+   11     words = sentence.split()[::-1]          #split and reverse sentence
+   12     l = []                                  # new ist
+   13     for i in words:
+   14         l.append(i)
+   15         return ' '.join(l)                  #for each item in words add to l and return everything joined on a space
+   16     '''words = sentence.split()
+   17     reverse = ' '.join(reversed(words))     # reversed does the same shit as [::-1] must assign a variable when using reverse, map & zip
+   18     return reverse'''
+   19 
+   20     '''return ' '.join(reversed([w for w in sentence.split()]))
+   21 
+   22 
+   23 
+   24     pass
+   25 
+   26 def q2(n):
+   27     '''
+   28     Given a positive integer, return its string representation with
+   29     commas seperating groups of 3 digits. For example, given 65535
+   30     the returned string should be '65,535'.
+   31     '''
+   32     return '{:,}'.format(n)          #format does it all for you, you just tell it what to insert
+   33 
+   34 
+   35 
+   36 
+   37 
+   38     pass
+   39 
+   40 def q3(lst0, lst1):
+   41     '''
+   42     Given two lists of integers, return a sorted list that contains
+   43     all integers from both lists in descending order. For example,
+   44     given [3,4,9] and [8,1,5] the returned list should be [9,8,5,4,3,1].
+   45     The returned list may contain duplicates.
+   46     '''
+   47     a = lst0 + lst1                 # add lists together and assign to a
+   48     a = sorted(a)
+   49     a = reversed(a)
+   50     return list(a)                  # sort and reverse combined list and return as a list
+   51 
+   52     ''' return list(reversed(sorted(lst0+lst1)))'''
+   53 
+   54 
+   55 
+   56 
+   57 
+   58 
+   59     pass
+   60 
+   61 def q4(s1,s2,s3):
+   62     '''
+   63     Given 3 scores in the range [0-100] inclusive, return 'GO' if
+   64     the average score is greater than 50. Otherwise return 'NOGO'.
+   65     '''
+   66 
+   67     avg = (st+s2+s3) / 3.0          #get the average
+   68     if avg <= 50:
+   69         return 'NOGO'
+   70     else:
+   71         return 'Go'
+   72 
+   73 
+   74    
+   75 
+   76 
+   77 
+   78     pass
+   79 
+   80 def q5(integer, limit):
+   81     '''
+   82     Given an integer and limit, return a list of even multiples of the
+   83     integer up to and including the limit. For example, if integer==3 and
+   84     limit==30, the returned list should be [0,6,12,18,24,30]. Note, 0 is
+   85     a multiple of any integer except 0 itself.
+   86     '''
+   87     multiples = []
+   88     for i in range(0, limit+1):             # for everything in range up to AND INCLUDING the limit
+   89         if (i%integer==0) and (i%2==0):     # if even
+   90             multiples.append(i)             # add the item to the list multiples
+   91     return multiples
+   92 
+   93 
+   94 
+   95 
+   96     pass
+   97 
+   98 def q6(f0, f1):
+   99     '''
+  100     Given two filenames, return a list whose elements consist of line numbers
+  101     for which the two files differ. The first line is considered line 0.
+  102     '''
+  103     diffs = []
+  104     linenum = 0
+  105 
+  106     with open(f0) as fp0, with oopen(f1) as fp1:
+  107         lines0 = fp0.readlines()                # assign variable to reading lines in fp0, different item in list per line
+  108         for i in fp1.readlines():               # for (same as last line for other file)
+  109             if i != lines0[linenum]:            # if it finds a difference, add the linenumber linenum
+  110                 diffs.append(linenum)           # add 1 to linenumber bc first line is 0
+  111             linenum += 1                        # repeat until done
+  112     return diffs
+  113 
+  114 
+  115 
+  116     pass
+  117 
+  118 def q7(lst):
+  119     '''
+  120     Return the first duplicate value in the given list.
+  121     For example, if given [5,7,9,1,3,7,9,5], the returned value should
+  122     be 7.
+  123     '''
+  124     seen = []                                   # whole thing basically goes through adding everything to seen as it sees it but checks i      f number is already there, if there it returns that number
+  125     for i in lst:
+  126         if i in seen:
+  127             return i
+  128         else:
+  129             seen.append(i)
+  130 
+  131 
+  132 
+  133 
+  134     pass
+  135 
+  136 def q8(strng):
+  137     '''
+  138     Given a sentence as a string with words being separated by a single space,
+  139     return the length of the shortest word.
+  140     '''
+  141     words = strng.split()
+  142     minlen = len(words[0])
+  143     for word in words:                          #for each word in words
+  144         if len(word) < minlen:                  #if th length is less than minlen
+  145             minlen = len(word)                        # change minlen to the length of that word
+  146     return minlen
+  147 
+  148
+  149 
+  150     pass
+  151 
+  152 def q9(strng):
+  153     '''
+  154     Given an alphanumeric string, return the character whose ascii value
+  155     is that of the integer represenation of all of the digits in the string
+  156     concatenated in the order in which they appear. For example, given
+  157     'hell9oworld7', the returned character should be 'a' which has
+  158     the ascii value of 97.
+  159     '''
+  160     chars = []
+  161     for c in strng:
+  162         if c.isdigit():           #if each item in strng is a digit, (.isdigit returns true or false)
+  163             chars.append(c)
+  164     return chr(int(''.join(chars)))     # join items in chars together, turn into an integer then turn into ascii w/ chr
+  165 
+  166 
+  167 
+  168     pass
+  169 
+  170 def q10(arr):
+  171     '''
+  172     Given a list of positive integers sorted in ascending order, return
+  173     the first non-consecutive value. If all values are consecutive, return
+  174     None. For example, given [1,2,3,4,6,7], the returned value should be 6. 
+  175     '''
+  176     for i in range(len(arr)):
+  177         if (arr[i+1] - arr[i]) != 1:    #basically if index value+1 - index value of current position doesn't equal 1, return
+  178             return arr[i+1]
+  179 
+  180 
+  181 
+  182     pass
+
