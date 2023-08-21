@@ -1,0 +1,18 @@
+keep the python handbook open
+split ip on period
+  think of ip as 4 different objects and think about what's most important to you based on question
+don't fuck up < and >
+won't have to do more than 5-10 if statements
+don't overthink the question, most simple way is probably what they want, not a lot of gotchas
+use practice exams
+don't freak out over tuple, just typecast
+    list = [0,1,2,3]
+    tuple(list)
+split on @ join on . split on . for emails
+only one fileio question
+if it asks you to return, return if it asks you to print, print
+if it asks you to read something jut know it's input
+.isdigit can be useful and returns as either true or false so you don't have to ==true or ==false
+make empty lists/strings as needed
+don't be afraid to use type() or print()  for clarification
+use repple,  ctrl+l to clear
