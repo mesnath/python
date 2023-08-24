@@ -1,0 +1,27 @@
+Bash Variables:
+    A=value                 A=120
+    B=value                 B=20
+    expr $A - $B            =100
+    C=$(expr $A - $B)
+    echo $C                 =100
+    D=.mp3                  for x in $(cat songs); do sed -i "s/$/$D/"; done
+                        =appends .mp3 to the end of every song in file: songs
+
+Special Parameters:
+      $* = The positional parameters, starting from one.
+      $@ = The positional parameters, starting from one.
+      $# = The number of positional parameters.
+      $? = The exit status of the previous command.
+      $- = The current option flags of the shell.
+      $$ = The process ID of the shell.
+      $! = The process ID of the most recent background job.
+      $0 = $0 is set to the name of the script.
+      $_ = First command in a script, is the path/name of the script as invoked.
+           Otherwise, it is the last parameter passed to the most recent command.
+
+md5sum
+  can't hash a directory
+    ex1: md5sum /home/student/bash.txt
+      prints md5 hash of bash.txt
+    ex2: echo variable.sh | md5sum
+      prints md5 hash of that script
